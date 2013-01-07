@@ -54,6 +54,22 @@ class mastercontrollTest extends SpecificationWithJUnit
 		   gamemaster.issolved === true	   
 		   
 		 }
+		  "suggest a proper amount of trys"in {		         
+		   val alphabet: Array [Digit] = Array(new Digit("A"),new Digit("B"),new Digit("C"),new Digit("D"),new Digit("E"))
+		   var gamemaster = new mastercontrol(2,alphabet)
+		   gamemaster.ini(3)
+		  gamemaster.autodefinemaxtry
+		  gamemaster.maxtry===alphabet.length+3
+		   
+		 }
+		  "produce a string of the playground/field"in {		         
+		   val alphabet: Array [Digit] = Array(new Digit("A"),new Digit("B"),new Digit("C"),new Digit("D"),new Digit("E"))
+		   var gamemaster = new mastercontrol(2,alphabet)
+		   gamemaster.ini(3)
+		  gamemaster.solvetry(gamemaster.supercode)
+		  gamemaster.toString === gamemaster.supercode.toString + " | #3 +0\n"
+		   
+		 }
 		 
 		
 		 }

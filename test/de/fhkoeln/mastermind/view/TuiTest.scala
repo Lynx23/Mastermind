@@ -40,7 +40,7 @@ class TuiTest extends SpecificationWithJUnit
 		   var testtui: Tui = new Tui(gamemaster)
 		   gamemaster.ini(3)
 		   while(gamemaster.maxtry>0)
-		   testtui.gameuserinput("F F F")
+		   testtui.gameuserinput("F F F ")
 		   gamemaster.issolved === false
 		   gamemaster.gameover === true
 		   
@@ -57,6 +57,17 @@ class TuiTest extends SpecificationWithJUnit
 		   tmp === gamemaster.maxtry
 		   gamemaster.issolved === false
 		   gamemaster.gameover === false
+		   
+		   
+		   
+    }  
+		"save a new codesize" in {         
+		   val alphabet: Array [Digit] = Array(new Digit("A"),new Digit("B"),new Digit("C"),new Digit("D"),new Digit("E"))
+		   var gamemaster = new mastercontrol(6, alphabet)
+		   var testtui: Tui = new Tui(gamemaster)
+		   testtui.userprepare("7")
+		   gamemaster.codesize===7
+		   
 		   
 		   
 		   

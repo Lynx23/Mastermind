@@ -23,8 +23,9 @@ class Tui (master: mastercontrol)
     println()
   //Spielregeln einstellen
     println("Code länge:")
-     
-    master.ini(readLine.toInt)
+  }
+  def userprepare(input:String){
+    master.ini(input.toInt)
     master.autodefinemaxtry;
     
   }
@@ -70,18 +71,18 @@ class Tui (master: mastercontrol)
     var output : List[Digit] = List () 
     input match
     {
-      case null => output = null
+      case Nil => output = Nil
       case ' ' :: rest => output = pars(rest).toList
       case symbol :: Nil => output = List(new Digit(symbol.toString)) 
       case symbol :: rest => output = new Digit(symbol.toString) :: pars(rest).toList
-      case _ =>output = null
+      //case _ =>output = null
       
       
       
     }
-    if(output != null)
+    //if(output != null)
     output.toArray
-    else null
+    //else null
   }
   
 }

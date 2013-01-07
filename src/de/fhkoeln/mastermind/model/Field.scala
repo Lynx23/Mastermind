@@ -17,7 +17,7 @@ class Field(val mastercode: Code)
    var returnstring = ""
    for(i <- 0 until getsize){
    
-     returnstring = returnstring +trys(i).toString + "| "  + resps(i).toString +"\n" 
+     returnstring = returnstring +trys(i).toString + " | "  + resps(i).toString +"\n" 
    }
    returnstring
  }

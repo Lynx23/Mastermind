@@ -6,10 +6,12 @@ import de.fhkoeln.mastermind.model._
 import scala.util.Random
 import scala.Math._
 /**
+ *manages the whole game//contains rules of the game
+ *it generates the supercode and the maximum number of trys.  
+ * 
  * @author ti619
- *
- */
-class mastercontrol(var maxtry: Int, alphabet: Array [Digit]) {
+ * */
+class mastercontrol(var maxtry: Int, var alphabet: Array [Digit]) {
   var codesize: Int = 3
 	var supercode : Code = null//randcode
 	var playground: Field = null//new Field(supercode)
@@ -54,10 +56,16 @@ class mastercontrol(var maxtry: Int, alphabet: Array [Digit]) {
 	  new Code(returndigits.toArray)
 	}
 	
+	
+	def autodefinemaxtry: Unit = maxtry = alphabet.length+codesize
+	
+	
 	override def toString: String = 
 	{
+	
 	  playground.toString
 	  	  
 	} 
+	
 	
 }

@@ -54,5 +54,8 @@ class mastercontrollTest extends SpecificationWithJUnit
 		   gamemaster.issolved === true	   
 		   
 		 }
-  }
+		 
+		
+		 }
+  
 }

@@ -4,6 +4,8 @@
 package de.fhkoeln.mastermind.model
 
 /**
+ * result of a comparison of two codes
+ * saves the amount of pins which have the correct color&correct place or just the correct color
  * @author Owl Mirror
  *
  */

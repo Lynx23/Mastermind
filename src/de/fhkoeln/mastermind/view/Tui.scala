@@ -11,8 +11,9 @@ import de.fhkoeln.mastermind.model._
  */
 class Tui (master: mastercontrol) 
 {
-  var rule_codesize : Int = 3
-  val rule_alphabet : Array[Digit] = Array(new Digit("A"))
+  //var rule_codesize : Int = 3
+  val rule_alphabet : Array[Digit] = master.alphabet
+  
   //#Prepare#
   def prepare : Unit ={
   //begrüßungsbildschirm
@@ -22,31 +23,46 @@ class Tui (master: mastercontrol)
     println()
   //Spielregeln einstellen
     println("Code länge:")
-    rule_codesize = readLine.toInt
-    master.codesize=rule_codesize
+     
+    master.ini(readLine.toInt)
+    master.autodefinemaxtry;
     
   }
   //#Game#
   def game : Unit = {
-  //Spielfeld ausgeben
-    println("-------------------------------------------------")
-    println(master.toString)
-    println("-------------------------------------------------")
-    
-  //User eingabe
-    println("Ihr Vorschlag ("+rule_codesize+" Zeichen) :")
     
   //Spielfeld ausgeben
+    	println("-------------------------------------------------")
+
+    	println(master.toString)
+    	println(" - - - - - - - - - - - - - - - - - - - - - - - - ")
+    	println("Zeichen [" + new Code(rule_alphabet).toString + "]");
+    	println("Verbeliebende Versuche: " + master.maxtry)
+    	println("-------------------------------------------------")
+    	println("Ihr Vorschlag ("+master.codesize+" Zeichen) :")
+  }
+   //User eingabe
+  def gameuserinput(input: String) : Unit = {
+    var userinput = pars(input.toUpperCase.toList)
+    var usertry = new Code(userinput)
+    //Eingabe prüfen
+    	if(master.codesize != usertry.size) {println("FEHLER Kombination muss " + master.codesize + " Zeichen haben" )}
+    
+    else
+    master.solvetry(usertry)
+  
   //Wenn gelöst -> WIN
-  //Wenn nicht gelöst & maxtry >0 -> Game
-  //sonst -> LOOSE
+    if(master.issolved)
+      win
+    else if(master.gameover == true) //Spiel vorbei? -> LOOSE
+      loose
   }
   
   //#WIN#
-  def win : Unit = {}
+  def win : Unit = {println("!!!!GEWONNEN!!!!")}
   
   //#LOOSE#
-  def loose : Unit = {}
+  def loose : Unit = {println("Verloren :(\n\nrichtige Lösung : " + master.supercode)}
   
   //Parser
   def pars(input: List[Char]): Array[Digit] = 

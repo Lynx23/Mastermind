@@ -50,16 +50,22 @@ class Tui (master: mastercontrol)
     var userinput = pars(input.toUpperCase.toList)
     var usertry = new Code(userinput)
     //Check inputsize
-    	if(master.codesize != usertry.size) {println("FEHLER Kombination muss " + master.codesize + " Zeichen haben" )}
+    if(master.codesize != usertry.size) {println("FEHLER Kombination muss " + master.codesize + " Zeichen haben" )}
     
     else
     master.solvetry(usertry)
   
   //check if code solved
     if(master.issolved)
+    {
+      Tui.space
       win
-    else if(master.gameover == true) //Spiel vorbei? -> LOOSE
+    }
+    else if(master.gameover == true) //gameover? -> LOOSE
+    { 
+      Tui.space
       loose
+    }
   }
   
   //#WIN#
@@ -67,7 +73,6 @@ class Tui (master: mastercontrol)
    * Prints the "winning" screen
    */
   def win : Unit = {
-    println("\n\n\n\n\n\n")
     println("!!!!GEWONNEN!!!!")
     }
   
@@ -76,7 +81,6 @@ class Tui (master: mastercontrol)
    * Prints the "loosing" screen
    */
   def loose : Unit = {
-    println("\n\n\n\n\n\n")
     println("Verloren :(\n\nrichtige Lösung : " + master.supercode)
     }
   
@@ -113,4 +117,8 @@ object Tui{
     output.toArray
   
   }
+  /**
+   * produce a 6 line space on the command window 
+   */
+  def space: Unit = println("\n\n\n\n\n\n")
 }

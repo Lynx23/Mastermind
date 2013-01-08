@@ -11,12 +11,18 @@ import scala.Math._
  * */
 class mastercontrol(var maxtry: Int, var alphabet: Array [Digit]) {
   var codesize: Int = 3
-	var supercode : Code = null
-	var playground: Field = null
-	var lastresponse: Response = null 
-	var issolved: Boolean = false
-	var gameover: Boolean = false
-	if(maxtry <= 0) gameover = true
+	var supercode : Code = null		//code which the player has to find out
+	var playground: Field = null	//the playground
+	var lastresponse: Response = null //saves the last response of the last user try
+	var issolved: Boolean = false	//true = player wins
+	var gameover: Boolean = false	//true = player looses
+	
+	if(maxtry <= 0) gameover = true //check the maxtrys
+	
+	/**
+	 * Initials the controller with new values which might have been change
+	 * HAS TO RUN AT LEAST ONCE! 
+	 */
   def ini(newsize:Int): Unit =
   {
 	codesize = newsize
@@ -24,7 +30,10 @@ class mastercontrol(var maxtry: Int, var alphabet: Array [Digit]) {
     playground = new Field(supercode) 
   }
 	
-	
+	/**
+	 * check the code of the user
+	 * if an error occours the game would be lost
+	 */
 	def solvetry(newtry: Code): Unit = 
 	{
 	  lastresponse = newtry.cmp(supercode)
@@ -44,7 +53,7 @@ class mastercontrol(var maxtry: Int, var alphabet: Array [Digit]) {
 	  if(maxtry == 0) gameover = true	
 	}
 	
-	
+	//generates a random code for this controller
 	def randcode: Code = 
 	{
 	  var returndigits : List[Digit]= List()
@@ -54,10 +63,14 @@ class mastercontrol(var maxtry: Int, var alphabet: Array [Digit]) {
 	  new Code(returndigits.toArray)
 	}
 	
-	
+	/**
+	 * set maxtry to a proper value
+	 */
 	def autodefinemaxtry: Unit = maxtry = alphabet.length+codesize
 	
-	
+	/**
+	 * textual return of the playground
+	 */
 	override def toString: String = 
 	{
 	

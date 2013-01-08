@@ -16,13 +16,13 @@ class Tui (master: mastercontrol)
   
   //#Prepare#
   def prepare : Unit ={
-  //begrüßungsbildschirm
+  //welcome-screen
     println("==============================================")
     println("       M  A  S  T  E  R     M  I  N  D")
     println("==============================================")
     println()
-  //Spielregeln einstellen
-    println("Code länge:")
+  //user can configure the gamerules
+    println("Code länge (0 = default):")
   }
   def userprepare(input:String){
     var size = input.toInt
@@ -35,7 +35,7 @@ class Tui (master: mastercontrol)
   //#Game#
   def game : Unit = {
     
-  //Spielfeld ausgeben
+  //show the playground
     	println("-------------------------------------------------")
 
     	println(master.toString)
@@ -45,17 +45,17 @@ class Tui (master: mastercontrol)
     	println("-------------------------------------------------")
     	println("Ihr Vorschlag ("+master.codesize+" Zeichen) :")
   }
-   //User eingabe
+   //User input
   def gameuserinput(input: String) : Unit = {
     var userinput = pars(input.toUpperCase.toList)
     var usertry = new Code(userinput)
-    //Eingabe prüfen
+    //Check inputsize
     	if(master.codesize != usertry.size) {println("FEHLER Kombination muss " + master.codesize + " Zeichen haben" )}
     
     else
     master.solvetry(usertry)
   
-  //Wenn gelöst -> WIN
+  //check if code solved
     if(master.issolved)
       win
     else if(master.gameover == true) //Spiel vorbei? -> LOOSE
@@ -63,18 +63,38 @@ class Tui (master: mastercontrol)
   }
   
   //#WIN#
-  def win : Unit = {println("!!!!GEWONNEN!!!!")}
+  /**
+   * Prints the "winning" screen
+   */
+  def win : Unit = {
+    println("\n\n\n\n\n\n")
+    println("!!!!GEWONNEN!!!!")
+    }
   
   //#LOOSE#
-  def loose : Unit = {println("Verloren :(\n\nrichtige Lösung : " + master.supercode)}
+  /**
+   * Prints the "loosing" screen
+   */
+  def loose : Unit = {
+    println("\n\n\n\n\n\n")
+    println("Verloren :(\n\nrichtige Lösung : " + master.supercode)
+    }
   
   //Parser
+  /**
+   * pars a strings into Arrays of digits
+   */
   def pars(input: List[Char]): Array[Digit] = 
   {
     Tui.pars(input)
   }
   
 }
+
+
+  /**
+   * Is able to pars strings into Arrays of digits
+   */
 object Tui{
   def pars(input: List[Char]): Array[Digit] = 
   {
@@ -85,13 +105,12 @@ object Tui{
       case ' ' :: rest => output = pars(rest).toList
       case symbol :: Nil => output = List(new Digit(symbol.toString)) 
       case symbol :: rest => output = new Digit(symbol.toString) :: pars(rest).toList
-      //case _ =>output = null
+     
       
       
       
     }
-    //if(output != null)
     output.toArray
-    //else null
+  
   }
 }

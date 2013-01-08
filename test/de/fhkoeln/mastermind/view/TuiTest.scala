@@ -24,7 +24,7 @@ class TuiTest extends SpecificationWithJUnit
 		   new Code(testtui.pars("A B B".toList)).cmp(new Code(Array(new Digit("A"),new Digit("B"),new Digit("C")))).ColorFit===1
 		 }
            
-		 "can be solved" in {         
+		 "be solveable" in {         
 		   val alphabet: Array [Digit] = Array(new Digit("A"),new Digit("B"),new Digit("C"),new Digit("D"),new Digit("E"))
 		   var gamemaster = new mastercontrol(6, alphabet)
 		   var testtui: Tui = new Tui(gamemaster)
@@ -35,7 +35,7 @@ class TuiTest extends SpecificationWithJUnit
 		   
 		   
     }  
-		"can be lost" in {         
+		"be looseable" in {         
 		   val alphabet: Array [Digit] = Array(new Digit("A"),new Digit("B"),new Digit("C"),new Digit("D"),new Digit("E"))
 		   var gamemaster = new mastercontrol(6, alphabet)
 		   var testtui: Tui = new Tui(gamemaster)

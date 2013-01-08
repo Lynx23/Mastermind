@@ -10,11 +10,11 @@ package de.fhkoeln.mastermind.model
  *
  */
 class Response {
-  var FullFit: Int = 0 //Anzahl der komplett richtigen
-  var ColorFit: Int = 0 //Anzahl der farblich richtigen (die aber NICHT an der richtigen Position sind)
+  var FullFit: Int = 0 //Amount of correct Digits
+  var ColorFit: Int = 0 //Amount of color-correct Digits
   var IsValid : Boolean = true
-  def inc_Full :Unit = FullFit+=1   //Erhöht die Anzahl der komplett Richtigen
-  def inc_Color :Unit = ColorFit+=1	//Erhöht die Anzahl der farblich Richtigen
+  def inc_Full :Unit = FullFit+=1   
+  def inc_Color :Unit = ColorFit+=1	
   
   override def toString : String = "#" + FullFit + " +" + ColorFit
 }

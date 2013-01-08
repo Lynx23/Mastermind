@@ -1,6 +1,4 @@
-/**
- *
- */
+
 package de.fhkoeln.mastermind.controller
 import de.fhkoeln.mastermind.model._
 import scala.util.Random
@@ -13,8 +11,8 @@ import scala.Math._
  * */
 class mastercontrol(var maxtry: Int, var alphabet: Array [Digit]) {
   var codesize: Int = 3
-	var supercode : Code = null//randcode
-	var playground: Field = null//new Field(supercode)
+	var supercode : Code = null
+	var playground: Field = null
 	var lastresponse: Response = null 
 	var issolved: Boolean = false
 	var gameover: Boolean = false

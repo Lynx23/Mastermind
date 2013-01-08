@@ -1,17 +1,17 @@
-/**
- *
- */
+
 package de.fhkoeln.mastermind.view
 import de.fhkoeln.mastermind.controller._
 import de.fhkoeln.mastermind.model._
 
 /**
+ * Textual User Interface for Mastermind
+ * is able to pars user input in Codes
  * @author ti619
  *
  */
 class Tui (master: mastercontrol) 
 {
-  //var rule_codesize : Int = 3
+  
   val rule_alphabet : Array[Digit] = master.alphabet
   
   //#Prepare#
@@ -25,7 +25,10 @@ class Tui (master: mastercontrol)
     println("Code länge:")
   }
   def userprepare(input:String){
-    master.ini(input.toInt)
+    var size = input.toInt
+    if(size<=0)
+      size=4	//default value
+    master.ini(size)
     master.autodefinemaxtry;
     
   }
@@ -68,6 +71,13 @@ class Tui (master: mastercontrol)
   //Parser
   def pars(input: List[Char]): Array[Digit] = 
   {
+    Tui.pars(input)
+  }
+  
+}
+object Tui{
+  def pars(input: List[Char]): Array[Digit] = 
+  {
     var output : List[Digit] = List () 
     input match
     {
@@ -84,5 +94,4 @@ class Tui (master: mastercontrol)
     output.toArray
     //else null
   }
-  
 }

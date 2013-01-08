@@ -33,6 +33,6 @@ class Field(val mastercode: Code)
      returnstring = returnstring +trys(i).toString + " | "  + resps(i).toString +"\n" 
    }
    returnstring
- }
+ } 
  
 }

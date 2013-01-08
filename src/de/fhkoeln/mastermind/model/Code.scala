@@ -36,7 +36,7 @@ def cmp(Other:Code) : Response = {
 		Answer
 }
 /**
- * prints the value of the digits in a row, with a ' ' between every digit
+ * prints the digits of the code in a row, with a space between every digit
  */
 override def toString : String = {
   var returnstring= ""

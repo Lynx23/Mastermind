@@ -107,7 +107,6 @@ object Tui{
     {
       case Nil => output = Nil
       case ' ' :: rest => output = pars(rest).toList
-      case symbol :: Nil => output = List(new Digit(symbol.toString)) 
       case symbol :: rest => output = new Digit(symbol.toString) :: pars(rest).toList
      
       
